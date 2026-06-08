@@ -16,4 +16,18 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="SqlScripts\20260608001_CreateCategoriesTable.sql" />
+    <None Remove="SqlScripts\20260608002_CreateBooksTable.sql" />
+    <None Remove="SqlScripts\20260608003_CreateMembersTable.sql" />
+    <None Remove="SqlScripts\20260608004_CreateLoansTable.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SqlScripts\20260608001_CreateCategoriesTable.sql" />
+    <EmbeddedResource Include="SqlScripts\20260608002_CreateBooksTable.sql" />
+    <EmbeddedResource Include="SqlScripts\20260608003_CreateMembersTable.sql" />
+    <EmbeddedResource Include="SqlScripts\20260608004_CreateLoansTable.sql" />
+  </ItemGroup>
+
 </Project>
