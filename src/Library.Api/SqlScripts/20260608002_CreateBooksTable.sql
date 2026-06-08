@@ -12,8 +12,8 @@ CREATE TABLE [dbo].[Books](
     [Year] int NOT NULL,
     [CategoryId] bigint NOT NULL,
     [IsAvailable] bit NOT NULL CONSTRAINT [DF_Books_IsAvailable] DEFAULT 1,
-    [Created] datetime2(7) NULL,
-    [LastChange] datetime2(7) NULL,
+    [Created] datetimeoffset(7) NULL,
+    [LastChange] datetimeoffset(7) NULL,
  CONSTRAINT [PK_Books] PRIMARY KEY CLUSTERED
 (
     [Id] ASC
