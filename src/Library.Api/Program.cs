@@ -1,8 +1,8 @@
 using FluentValidation;
+using Kros.KORM.Extensions.Asp;
 using Library.Api.Application.Behaviors;
-using Library.Api.Domain;
-using Library.Api.Infrastructure;
 using MediatR;
+using Scrutor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,11 +21,17 @@ builder.Services.AddMediatR(cfg =>
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
-// Repositories (in-memory — swap to SQL/KORM later)
-builder.Services.AddSingleton<IBookRepository, InMemoryBookRepository>();
-builder.Services.AddSingleton<ICategoryRepository, InMemoryCategoryRepository>();
-builder.Services.AddSingleton<IMemberRepository, InMemoryMemberRepository>();
-builder.Services.AddSingleton<ILoanRepository, InMemoryLoanRepository>();
+// KORM Database
+builder.Services.AddKorm(builder.Configuration)
+    .UseDatabaseConfiguration<Library.Api.Infrastructure.DatabaseConfiguration>()
+    .AddKormMigrations()
+    .Migrate();
+
+// Auto-register repositories via Scrutor (matches IXxxRepository → XxxRepository)
+builder.Services.Scan(scan =>
+    scan.FromAssemblyOf<Program>()
+        .AddClasses()
+        .AsMatchingInterface());
 
 var app = builder.Build();
 
@@ -37,6 +43,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseKormMigrations();
 app.MapControllers();
 
 app.Run();
