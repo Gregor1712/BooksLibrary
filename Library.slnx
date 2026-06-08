@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Library.Api/Library.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Library.Api.Tests/Library.Api.Tests.csproj" />
+  </Folder>
+  <Folder Name="/reference/Kros.AspNetCore.BestPractices/">
+    <Folder Name="/reference/Kros.AspNetCore.BestPractices/src/">
+      <Project Path="../Kros.AspNetCore.BestPractices/src/Services/Kros.ToDos.Api/Kros.ToDos.Api.csproj" />
+      <Project Path="../Kros.AspNetCore.BestPractices/src/Services/Kros.Tags.Api/Kros.Tags.Api.csproj" />
+      <Project Path="../Kros.AspNetCore.BestPractices/src/Services/Kros.Authorization.Api/Kros.Authorization.Api.csproj" />
+      <Project Path="../Kros.AspNetCore.BestPractices/src/Services/Kros.Organizations.Api/Kros.Organizations.Api.csproj" />
+      <Project Path="../Kros.AspNetCore.BestPractices/src/Services/Kros.Statistics.Api/Kros.Statistics.Api.csproj" />
+      <Project Path="../Kros.AspNetCore.BestPractices/src/Lib/Kros.ToDos.Base/Kros.ToDos.Base.csproj" />
+      <Project Path="../Kros.AspNetCore.BestPractices/src/Kros.ApiGateway.Api/Kros.ApiGateway.Api.csproj" />
+    </Folder>
+    <Folder Name="/reference/Kros.AspNetCore.BestPractices/tests/">
+      <Project Path="../Kros.AspNetCore.BestPractices/tests/Kros.ToDos.Base.Tests/Kros.ToDos.Base.Tests.csproj" />
+      <Project Path="../Kros.AspNetCore.BestPractices/tests/Kros.Tags.Tests/Kros.Tags.Tests.csproj" />
+    </Folder>
+  </Folder>
+</Solution>
