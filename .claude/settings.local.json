@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:/Users/grego/RiderProjects/Library\" && dotnet build Library.slnx 2>&1 | grep \"error\" | grep -v \"MSB3\")",
+      "Bash(cd \"C:/Users/grego/RiderProjects/Library\" && dotnet build Library.slnx 2>&1)",
+      "Bash(cd \"C:/Users/grego/RiderProjects/Library\" && dotnet build tests/Library.Api.Tests 2>&1)",
+      "Bash(taskkill /PID 23008 /F 2>&1; sleep 2 && cd \"C:/Users/grego/RiderProjects/Library\" && dotnet build Library.slnx 2>&1)"
+    ]
+  }
+}

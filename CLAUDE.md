@@ -11,11 +11,11 @@ The onboarding spec is in `Onboarding_Novy_Developer.pdf` at the repo root.
 ## Build & Run Commands
 
 ```bash
-dotnet build Library.slnx
-dotnet run --project src/Library.Api
-dotnet test Library.slnx
-dotnet test Library.slnx --filter "FullyQualifiedName~CreateLoanCommandHandlerTests.Handle_BookAvailable_CreatesLoan"
-dotnet test tests/Library.Api.Tests
+dotnet build BooksLibrary.slnx
+dotnet run --project src/BooksLibrary.Api
+dotnet test BooksLibrary.slnx
+dotnet test BooksLibrary.slnx --filter "FullyQualifiedName~CreateLoanCommandHandlerTests.Handle_BookAvailable_CreatesLoan"
+dotnet test tests/BooksLibrary.Api.Tests
 ```
 
 Swagger UI at `/swagger` in Development mode.
@@ -24,7 +24,7 @@ Swagger UI at `/swagger` in Development mode.
 
 .NET 10 Web API using **CQRS with MediatR**, modeled after Kros.AspNetCore.BestPractices (specifically the Kros.ToDos.Api service).
 
-### Layers (all within `src/Library.Api`)
+### Layers (all within `src/BooksLibrary.Api`)
 
 - **Domain** (`Domain/`) — Entity classes (`Book`, `Category`, `Member`, `Loan`) and repository interfaces. No business logic here.
 - **Application** (`Application/`) — CQRS layer:
@@ -32,7 +32,7 @@ Swagger UI at `/swagger` in Development mode.
   - `Queries/{Entity}/` — Query records with **nested DTO classes** (same pattern as BestPractices). A single query handler per entity handles both get-by-id and get-all.
   - `Controllers/` — Thin controllers delegating entirely to MediatR. One per entity.
   - `Behaviors/` — MediatR pipeline behaviors (`ValidationBehavior` for automatic FluentValidation).
-- **Infrastructure** (`Infrastructure/`) — In-memory repository implementations using `ConcurrentDictionary`. Registered as singletons, designed to be swapped for Kros.KORM later.
+- **Infrastructure** (`Infrastructure/`) — Kros.KORM repository implementations backed by SQL Server. Auto-registered via Scrutor.
 
 ### Key Patterns (aligned with Kros.AspNetCore.BestPractices)
 
@@ -60,7 +60,6 @@ When adding new features, refer to `C:\Users\grego\RiderProjects\Kros.AspNetCore
 
 ## Planned Evolution
 
-1. **Current**: In-memory repositories, backend CRUD + business rules
-2. **Next**: Swap to Kros.KORM with SQL Server (migration scripts in embedded resources)
-3. **Later**: Angular SPA frontend (Angular 15 + PrimeNG + NgRx, then upgrade path to 20/21)
-4. **Optional**: Azure Function (timer trigger, e.g., daily CSV export)
+1. **Done**: Backend CRUD + business rules with Kros.KORM + SQL Server
+2. **Next**: Angular SPA frontend (Angular 15 + PrimeNG + NgRx, then upgrade path to 20/21)
+3. **Optional**: Azure Function (timer trigger, e.g., daily CSV export)
