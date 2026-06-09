@@ -48,4 +48,5 @@ public class LoanRepository : ILoanRepository
 
     public Task UpdateAsync(Loan loan)
         => _database.EditAsync(loan);
+    
 }
