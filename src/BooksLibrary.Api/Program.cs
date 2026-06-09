@@ -31,7 +31,8 @@ builder.Services.AddKorm(builder.Configuration)
 builder.Services.Scan(scan =>
     scan.FromAssemblyOf<Program>()
         .AddClasses()
-        .AsMatchingInterface());
+        .AsMatchingInterface()
+        .WithScopedLifetime());
 
 var app = builder.Build();
 
