@@ -348,3 +348,4 @@ C:\Users\grego\RiderProjects\BooksLibrary\tests\BooksLibrary.Api.Tests\obj\Debug
 C:\Users\grego\RiderProjects\BooksLibrary\tests\BooksLibrary.Api.Tests\obj\Debug\net10.0\BooksLibrary.Api.Tests.pdb
 C:\Users\grego\RiderProjects\BooksLibrary\tests\BooksLibrary.Api.Tests\obj\Debug\net10.0\BooksLibrary.Api.Tests.genruntimeconfig.cache
 C:\Users\grego\RiderProjects\BooksLibrary\tests\BooksLibrary.Api.Tests\obj\Debug\net10.0\ref\BooksLibrary.Api.Tests.dll
+C:\Users\grego\RiderProjects\BooksLibrary\tests\BooksLibrary.Api.Tests\obj\Debug\net10.0\BooksLibrary.Api.Tests.sourcelink.json

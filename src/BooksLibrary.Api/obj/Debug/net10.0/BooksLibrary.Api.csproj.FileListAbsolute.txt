@@ -170,3 +170,4 @@ C:\Users\grego\RiderProjects\BooksLibrary\src\BooksLibrary.Api\obj\Debug\net10.0
 C:\Users\grego\RiderProjects\BooksLibrary\src\BooksLibrary.Api\obj\Debug\net10.0\BooksLibrary.Api.pdb
 C:\Users\grego\RiderProjects\BooksLibrary\src\BooksLibrary.Api\obj\Debug\net10.0\BooksLibrary.Api.genruntimeconfig.cache
 C:\Users\grego\RiderProjects\BooksLibrary\src\BooksLibrary.Api\obj\Debug\net10.0\ref\BooksLibrary.Api.dll
+C:\Users\grego\RiderProjects\BooksLibrary\src\BooksLibrary.Api\obj\Debug\net10.0\BooksLibrary.Api.sourcelink.json

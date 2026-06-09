@@ -1,8 +1,8 @@
 using FluentValidation;
+using Kros.KORM;
 using Kros.KORM.Extensions.Asp;
 using BooksLibrary.Api.Application.Behaviors;
 using MediatR;
-using Scrutor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,5 +46,27 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseKormMigrations();
 app.MapControllers();
+
+// Seed database on first start (only if no data exists)
+using (var scope = app.Services.CreateScope())
+{
+    var database = scope.ServiceProvider.GetRequiredService<IDatabase>();
+    var count = database.Query<BooksLibrary.Api.Domain.Category>().Count();
+    if (count == 0)
+    {
+        var seedPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "SqlScripts", "SeedData.sql");
+        var sql = await File.ReadAllTextAsync(seedPath);
+        var batches = sql.Split("\nGO", StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (var batch in batches)
+        {
+            var trimmed = batch.Trim();
+            if (!string.IsNullOrEmpty(trimmed))
+            {
+                await database.ExecuteNonQueryAsync(trimmed);
+            }
+        }
+    }
+}
 
 app.Run();

@@ -28,6 +28,7 @@
     <EmbeddedResource Include="SqlScripts\20260608002_CreateBooksTable.sql" />
     <EmbeddedResource Include="SqlScripts\20260608003_CreateMembersTable.sql" />
     <EmbeddedResource Include="SqlScripts\20260608004_CreateLoansTable.sql" />
+    <EmbeddedResource Include="SqlScripts\SeedData.sql" />
   </ItemGroup>
 
 </Project>
