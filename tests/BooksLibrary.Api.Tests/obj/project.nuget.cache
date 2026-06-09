@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EQyqPwOfK0Y=",
+  "dgSpecHash": "sbdK3+mpCu0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\grego\\RiderProjects\\Library\\tests\\BooksLibrary.Api.Tests\\BooksLibrary.Api.Tests.csproj",
+  "projectFilePath": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\tests\\BooksLibrary.Api.Tests\\BooksLibrary.Api.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\grego\\.nuget\\packages\\azure.core\\1.53.0\\azure.core.1.53.0.nupkg.sha512",
     "C:\\Users\\grego\\.nuget\\packages\\azure.identity\\1.21.0\\azure.identity.1.21.0.nupkg.sha512",

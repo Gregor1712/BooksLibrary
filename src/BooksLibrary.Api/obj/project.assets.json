@@ -77,7 +77,8 @@
       "FluentValidation.DependencyInjectionExtensions/11.11.0": {
         "type": "package",
         "dependencies": {
-          "FluentValidation": "11.11.0"
+          "FluentValidation": "11.11.0",
+          "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
         },
         "compile": {
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
@@ -350,6 +351,19 @@
         "buildMultiTargeting": {
           "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.props": {},
           "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.targets": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.Extensions.DependencyModel/10.0.0": {
@@ -1379,6 +1393,19 @@
         "tools/net462/netstandard.dll"
       ]
     },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
+      "sha512": "8/CtASu80UIoyG+r8FstrmZW5GLtXxzoYpjj3jV0FKZCL5CiFgSH3pAmqut/dC68mu7N1bU6v0UtKKL3gCUQGQ==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec"
+      ]
+    },
     "Microsoft.Extensions.DependencyModel/10.0.0": {
       "sha512": "RFYJR7APio/BiqdQunRq6DB+nDB6nc2qhHr77mlvZ0q0BT8PubMXN7XicmfzCbrDE/dzhBnUKBRXLTcqUiZDGg==",
       "type": "package",
@@ -1964,11 +1991,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\grego\\RiderProjects\\Library\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj",
+      "projectUniqueName": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj",
       "projectName": "BooksLibrary.Api",
-      "projectPath": "C:\\Users\\grego\\RiderProjects\\Library\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj",
+      "projectPath": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj",
       "packagesPath": "C:\\Users\\grego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\grego\\RiderProjects\\Library\\src\\BooksLibrary.Api\\obj\\",
+      "outputPath": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\src\\BooksLibrary.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\grego\\AppData\\Roaming\\NuGet\\NuGet.Config",

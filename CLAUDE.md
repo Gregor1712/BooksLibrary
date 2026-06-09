@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-This is a training project ("Library API") built as part of onboarding for the KROS Masha project. It follows the patterns from **Kros.AspNetCore.BestPractices** (`C:\Users\grego\RiderProjects\Kros.AspNetCore.BestPractices`). The goal is to replicate the Masha/KROS stack in miniature: first backend, then Angular frontend.
+This is a training project ("Library API") built as part of onboarding for the KROS Masha project. The goal is to replicate the Masha/KROS stack in miniature: first backend, then Angular frontend.
 
 The onboarding spec is in `Onboarding_Novy_Developer.pdf` at the repo root.
 
@@ -22,19 +22,19 @@ Swagger UI at `/swagger` in Development mode.
 
 ## Architecture
 
-.NET 10 Web API using **CQRS with MediatR**, modeled after Kros.AspNetCore.BestPractices (specifically the Kros.ToDos.Api service).
+.NET 10 Web API using **CQRS with MediatR**.
 
 ### Layers (all within `src/BooksLibrary.Api`)
 
 - **Domain** (`Domain/`) — Entity classes (`Book`, `Category`, `Member`, `Loan`) and repository interfaces. No business logic here.
 - **Application** (`Application/`) — CQRS layer:
   - `Commands/{Entity}/` — Command classes (`IRequest<T>`), handlers (`IRequestHandler`), and FluentValidation validators.
-  - `Queries/{Entity}/` — Query records with **nested DTO classes** (same pattern as BestPractices). A single query handler per entity handles both get-by-id and get-all.
+  - `Queries/{Entity}/` — Query records with **nested DTO classes**. A single query handler per entity handles both get-by-id and get-all.
   - `Controllers/` — Thin controllers delegating entirely to MediatR. One per entity.
   - `Behaviors/` — MediatR pipeline behaviors (`ValidationBehavior` for automatic FluentValidation).
 - **Infrastructure** (`Infrastructure/`) — Kros.KORM repository implementations backed by SQL Server. Auto-registered via Scrutor.
 
-### Key Patterns (aligned with Kros.AspNetCore.BestPractices)
+### Key Patterns
 
 - **Commands** return `long` (created ID) or `Unit`. **Queries** return DTOs nested inside the query record.
 - **Mapster** for entity-to-DTO mapping (`.Adapt<T>()`), no explicit mapping config.

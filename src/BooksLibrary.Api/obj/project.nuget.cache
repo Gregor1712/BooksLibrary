@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1vY8obcRiLs=",
+  "dgSpecHash": "tFwcTg3MYQ0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\grego\\RiderProjects\\Library\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj",
+  "projectFilePath": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\grego\\.nuget\\packages\\azure.core\\1.53.0\\azure.core.1.53.0.nupkg.sha512",
     "C:\\Users\\grego\\.nuget\\packages\\azure.identity\\1.21.0\\azure.identity.1.21.0.nupkg.sha512",
@@ -23,6 +23,7 @@
     "C:\\Users\\grego\\.nuget\\packages\\microsoft.data.sqlclient.internal.logging\\1.0.0\\microsoft.data.sqlclient.internal.logging.1.0.0.nupkg.sha512",
     "C:\\Users\\grego\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\6.0.2\\microsoft.data.sqlclient.sni.runtime.6.0.2.nupkg.sha512",
     "C:\\Users\\grego\\.nuget\\packages\\microsoft.extensions.apidescription.server\\10.0.0\\microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
+    "C:\\Users\\grego\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
     "C:\\Users\\grego\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.0\\microsoft.extensions.dependencymodel.10.0.0.nupkg.sha512",
     "C:\\Users\\grego\\.nuget\\packages\\microsoft.identity.client\\4.83.1\\microsoft.identity.client.4.83.1.nupkg.sha512",
     "C:\\Users\\grego\\.nuget\\packages\\microsoft.identity.client.extensions.msal\\4.83.1\\microsoft.identity.client.extensions.msal.4.83.1.nupkg.sha512",
