@@ -16,6 +16,8 @@ public record GetAllBooksQuery : IRequest<IEnumerable<GetAllBooksQuery.BookListI
 
         public int Year { get; set; }
 
+        public long CategoryId { get; set; }
+
         public bool IsAvailable { get; set; }
     }
 }
