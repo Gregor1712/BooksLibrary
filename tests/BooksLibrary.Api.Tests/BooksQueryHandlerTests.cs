@@ -1,18 +1,24 @@
+using FluentAssertions;
 using BooksLibrary.Api.Application.Queries.Books;
 using BooksLibrary.Api.Domain;
-using FluentAssertions;
 using NSubstitute;
-using Xunit;
 
 namespace BooksLibrary.Api.Tests;
 
 public class BooksQueryHandlerTests
 {
+    private readonly IBookRepository _bookRepository = Substitute.For<IBookRepository>();
+    private readonly BooksQueryHandler _handler;
+
+    public BooksQueryHandlerTests()
+    {
+        _handler = new BooksQueryHandler(_bookRepository);
+    }
+
     [Fact]
     public async Task Handle_GetAllBooks_MapsCategoryId()
     {
-        var repository = Substitute.For<IBookRepository>();
-        repository.GetAllAsync().Returns(new[]
+        _bookRepository.GetAllAsync().Returns(new[]
         {
             new Book
             {
@@ -25,9 +31,8 @@ public class BooksQueryHandlerTests
                 IsAvailable = true,
             },
         });
-        var handler = new BooksQueryHandler(repository);
 
-        var result = await handler.Handle(new GetAllBooksQuery(), CancellationToken.None);
+        var result = await _handler.Handle(new GetAllBooksQuery(), CancellationToken.None);
 
         var item = result.Single();
         item.CategoryId.Should().Be(3);
