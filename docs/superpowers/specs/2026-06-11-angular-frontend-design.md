@@ -95,7 +95,9 @@ Same shape, with these differences:
 
 - Table data comes from the backend **detail query** (`GetDetailAllLoansQuery`) so rows
   carry book title + member name, not raw IDs.
-- `loanForm`: `bookId`, `memberId` — both required. Lookups: available books + members.
+- `loanForm`: `bookId`, `memberId` — both required. Lookups: books + members loaded
+  on dialog open; the book dropdown filters to available books **client-side** (no
+  new backend endpoint).
 - Extra action pair: `[Loans Page] Return Book` → `[Loans API] Return Success/Failure`,
   calling the return endpoint then reloading the list.
 - `showReturned: boolean` flag in state; the list selector filters active vs. all
