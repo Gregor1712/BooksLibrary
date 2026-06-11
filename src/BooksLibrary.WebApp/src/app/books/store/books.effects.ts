@@ -13,6 +13,7 @@ import { FormGroupState } from 'ngrx-forms';
 import {
   selectBookForm, selectBooksLoaded, selectCategories, selectEditedId,
 } from './books.selectors';
+import { LoansApiActions } from '../../loans/store/loans.actions';
 
 @Injectable()
 export class BooksEffects {
@@ -30,9 +31,12 @@ export class BooksEffects {
     ),
   );
 
+  // Cross-feature cache invalidation: loan mutations (create/return) change book availability,
+  // so the cached books list must be refetched. Same role as MediatR notifications in the
+  // Kros reference architecture.
   refresh$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(BooksApiActions.saveSuccess, BooksApiActions.deleteSuccess),
+      ofType(BooksApiActions.saveSuccess, BooksApiActions.deleteSuccess, LoansApiActions.saveSuccess, LoansApiActions.returnSuccess),
       switchMap(() =>
         this.booksApi.getAll().pipe(
           map(books => BooksApiActions.loadSuccess({ books })),

@@ -15,6 +15,7 @@ import { BooksEffects } from './books.effects';
 import {
   selectBookForm, selectBooksLoaded, selectCategories, selectEditedId,
 } from './books.selectors';
+import { LoansApiActions } from '../../loans/store/loans.actions';
 
 describe('BooksEffects', () => {
   let actions$: Observable<Action>;
@@ -130,6 +131,16 @@ describe('BooksEffects', () => {
   it('refresh$ refetches after saveSuccess', (done) => {
     booksApi.getAll.and.returnValue(of([book]));
     actions$ = of(BooksApiActions.saveSuccess());
+
+    effects.refresh$.subscribe(action => {
+      expect(action).toEqual(BooksApiActions.loadSuccess({ books: [book] }));
+      done();
+    });
+  });
+
+  it('refresh$ refetches books when LoansApiActions.saveSuccess is dispatched', (done) => {
+    booksApi.getAll.and.returnValue(of([book]));
+    actions$ = of(LoansApiActions.saveSuccess());
 
     effects.refresh$.subscribe(action => {
       expect(action).toEqual(BooksApiActions.loadSuccess({ books: [book] }));

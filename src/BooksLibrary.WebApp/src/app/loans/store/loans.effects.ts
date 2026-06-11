@@ -53,6 +53,8 @@ export class LoansEffects {
     ),
   );
 
+  // Deliberate: refetch on every dialog open (no cache guard). Book availability is volatile —
+  // another user may have created or returned a loan since the last fetch.
   loadBooks$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoansPageActions.openDialog),
