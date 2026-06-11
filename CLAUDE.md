@@ -20,6 +20,14 @@ dotnet test tests/BooksLibrary.Api.Tests
 
 Swagger UI at `/swagger` in Development mode.
 
+Frontend (from `src/BooksLibrary.WebApp`):
+
+```bash
+npm start                                            # ng serve with API proxy on :4200
+npm test -- --watch=false --browsers=ChromeHeadless  # Karma single run
+npm run build
+```
+
 ## Architecture
 
 .NET 10 Web API using **CQRS with MediatR**.
@@ -43,6 +51,14 @@ Swagger UI at `/swagger` in Development mode.
 - Domain/business rules (max 5 active loans, book availability) live in **command handlers**, not domain entities.
 - Controller actions should be thin — extract IDs from route, set them on the command, send via MediatR.
 
+### Frontend (`src/BooksLibrary.WebApp`)
+
+Angular 15 + PrimeNG 15 + NgRx 15 + ngrx-forms (deliberately legacy — mirrors Masha before its upgrade).
+`core/` (API services, error interceptor), `shared/` (PrimeNG re-exports), lazy `books/` and `loans/`
+feature modules each with their own NgRx slice (`store/` folder: actions, reducer with ngrx-forms,
+selectors incl. view-model joins, effects). Dev proxy `proxy.conf.json` forwards `/api` to the .NET API
+(`http://localhost:5087`) — start the API before `npm start`.
+
 ### Reference Project
 
 When adding new features, refer to `C:\Users\grego\RiderProjects\Kros.AspNetCore.BestPractices` for:
@@ -61,5 +77,5 @@ When adding new features, refer to `C:\Users\grego\RiderProjects\Kros.AspNetCore
 ## Planned Evolution
 
 1. **Done**: Backend CRUD + business rules with Kros.KORM + SQL Server
-2. **Next**: Angular SPA frontend (Angular 15 + PrimeNG + NgRx, then upgrade path to 20/21)
+2. **In progress**: Angular SPA frontend (Angular 15 + PrimeNG + NgRx; Books + Loans done, Members/Categories screens and the upgrade path to 20/21 pending)
 3. **Optional**: Azure Function (timer trigger, e.g., daily CSV export)
