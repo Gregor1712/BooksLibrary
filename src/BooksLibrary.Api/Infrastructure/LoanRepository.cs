@@ -48,5 +48,12 @@ public class LoanRepository : ILoanRepository
 
     public Task UpdateAsync(Loan loan)
         => _database.EditAsync(loan);
-    
+
+    public Task<IEnumerable<Loan>> GetByBookIdAsync(long bookId)
+    {
+        var loans = _database.Query<Loan>()
+            .Where(l => l.BookId == bookId)
+            .AsEnumerable();
+        return Task.FromResult(loans);
+    }
 }

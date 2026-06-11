@@ -13,5 +13,6 @@ public interface ILoanRepository
     Task<Loan?> GetActiveByBookIdAsync(long bookId);
 
     Task UpdateAsync(Loan loan);
-    
+
+    Task<IEnumerable<Loan>> GetByBookIdAsync(long bookId);
 }
