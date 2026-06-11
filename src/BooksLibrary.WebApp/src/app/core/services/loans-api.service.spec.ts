@@ -33,6 +33,7 @@ describe('LoansApiService', () => {
     service.returnBook(7).subscribe();
     const req = httpMock.expectOne('/api/Loans/7/return');
     expect(req.request.method).toBe('PUT');
+    expect(req.request.body).toBeNull();
     req.flush(null);
   });
 });
