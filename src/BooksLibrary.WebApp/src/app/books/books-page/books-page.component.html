@@ -1,0 +1,45 @@
+<p-toolbar styleClass="mb-3">
+  <ng-template pTemplate="left">
+    <h2 class="m-0">Books</h2>
+  </ng-template>
+  <ng-template pTemplate="right">
+    <button pButton label="New Book" icon="pi pi-plus" (click)="onNew()"></button>
+  </ng-template>
+</p-toolbar>
+
+<p-table [value]="(vm$ | async) ?? []" styleClass="p-datatable-sm">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Year</th>
+      <th>Category</th>
+      <th>Status</th>
+      <th style="width: 8rem"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-book>
+    <tr>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.year }}</td>
+      <td>{{ book.categoryName }}</td>
+      <td>
+        <p-tag
+          [value]="book.isAvailable ? 'Available' : 'On loan'"
+          [severity]="book.isAvailable ? 'success' : 'warning'">
+        </p-tag>
+      </td>
+      <td>
+        <button pButton icon="pi pi-pencil" class="p-button-text mr-1" (click)="onEdit(book)"></button>
+        <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="onDelete(book)"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="6">No books found.</td></tr>
+  </ng-template>
+</p-table>
+
+<app-book-dialog></app-book-dialog>
+<p-confirmDialog [style]="{ width: '24rem' }"></p-confirmDialog>

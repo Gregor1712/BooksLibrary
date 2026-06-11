@@ -1,0 +1,62 @@
+<p-dialog
+  [visible]="(open$ | async) ?? false"
+  (onHide)="onClose()"
+  [modal]="true"
+  [style]="{ width: '28rem' }"
+  [header]="(editedId$ | async) === null ? 'New Book' : 'Edit Book'"
+  [closable]="true">
+
+  <div class="p-fluid" *ngIf="form$ | async as form">
+    <div class="field">
+      <label for="title">Title</label>
+      <input pInputText id="title" [ngrxFormControlState]="form.controls.title" />
+      <small class="p-error" *ngIf="form.controls.title.isInvalid && (form.controls.title.isTouched || form.isSubmitted)">
+        Title is required (max 200 characters).
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="author">Author</label>
+      <input pInputText id="author" [ngrxFormControlState]="form.controls.author" />
+      <small class="p-error" *ngIf="form.controls.author.isInvalid && (form.controls.author.isTouched || form.isSubmitted)">
+        Author is required (max 100 characters).
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="isbn">ISBN</label>
+      <input pInputText id="isbn" [ngrxFormControlState]="form.controls.isbn" />
+      <small class="p-error" *ngIf="form.controls.isbn.isInvalid && (form.controls.isbn.isTouched || form.isSubmitted)">
+        ISBN is required (max 13 characters).
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="year">Year</label>
+      <input pInputText id="year" type="number" [ngrxFormControlState]="form.controls.year" />
+      <small class="p-error" *ngIf="form.controls.year.isInvalid && (form.controls.year.isTouched || form.isSubmitted)">
+        Year must be between 1 and the current year.
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="category">Category</label>
+      <p-dropdown
+        inputId="category"
+        [options]="(categories$ | async) ?? []"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="Select a category"
+        [ngrxFormControlState]="form.controls.categoryId">
+      </p-dropdown>
+      <small class="p-error" *ngIf="form.controls.categoryId.isInvalid && (form.controls.categoryId.isTouched || form.isSubmitted)">
+        Category is required.
+      </small>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton label="Cancel" class="p-button-text" (click)="onClose()"></button>
+    <button pButton label="Save" [disabled]="(saving$ | async) ?? false" (click)="onSave()"></button>
+  </ng-template>
+</p-dialog>
