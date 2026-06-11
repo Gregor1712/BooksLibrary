@@ -7,8 +7,7 @@ import { EMPTY, Observable, catchError, exhaustMap, filter, from, map, of, switc
 import { SaveBookRequest } from '../../core/models/book';
 import { BooksApiService } from '../../core/services/books-api.service';
 import { CategoriesApiService } from '../../core/services/categories-api.service';
-import { BOOK_FORM_ID } from './book-form';
-import { BookFormValue } from './book-form';
+import { BOOK_FORM_ID, BookFormValue } from './book-form';
 import { BooksApiActions, BooksPageActions } from './books.actions';
 import { FormGroupState } from 'ngrx-forms';
 import {
@@ -60,9 +59,11 @@ export class BooksEffects {
   save$ = createEffect((): Observable<Action> =>
     this.actions$.pipe(
       ofType(BooksPageActions.save),
-      concatLatestFrom(() => this.store.select(selectBookForm)),
-      concatLatestFrom(([, form]) => this.store.select(selectEditedId)),
-      exhaustMap(([[, form], editedId]: [[unknown, FormGroupState<BookFormValue>], number | null]) => {
+      concatLatestFrom(() => [
+        this.store.select(selectBookForm),
+        this.store.select(selectEditedId),
+      ]),
+      exhaustMap(([, form, editedId]: [unknown, FormGroupState<BookFormValue>, number | null]) => {
         if (form.isInvalid) {
           const actions: Action[] = [
             new MarkAsSubmittedAction(BOOK_FORM_ID) as Action,

@@ -4,6 +4,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { MessageService } from 'primeng/api';
 import { Observable, of, throwError } from 'rxjs';
+import { MarkAsSubmittedAction } from 'ngrx-forms';
 import { Book } from '../../core/models/book';
 import { BooksApiService } from '../../core/services/books-api.service';
 import { CategoriesApiService } from '../../core/services/categories-api.service';
@@ -133,6 +134,26 @@ describe('BooksEffects', () => {
     effects.refresh$.subscribe(action => {
       expect(action).toEqual(BooksApiActions.loadSuccess({ books: [book] }));
       done();
+    });
+  });
+
+  it('save$ marks the form submitted and fails when the form is invalid', (done) => {
+    const invalidForm = validateBookForm(createBookFormState({
+      title: '', author: '', isbn: '', year: 2008, categoryId: null,
+    }));
+    store.overrideSelector(selectBookForm, invalidForm);
+    store.refreshState();
+    actions$ = of(BooksPageActions.save());
+
+    const emitted: Action[] = [];
+    effects.save$.subscribe({
+      next: action => emitted.push(action),
+      complete: () => {
+        expect(emitted[0]).toEqual(jasmine.objectContaining({ type: MarkAsSubmittedAction.TYPE }));
+        expect(emitted[1]).toEqual(BooksApiActions.saveFailure());
+        expect(booksApi.create).not.toHaveBeenCalled();
+        done();
+      },
     });
   });
 });
