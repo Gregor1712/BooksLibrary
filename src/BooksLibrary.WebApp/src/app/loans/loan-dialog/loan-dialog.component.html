@@ -1,0 +1,49 @@
+<p-dialog
+  [visible]="(open$ | async) ?? false"
+  (onHide)="onClose()"
+  [modal]="true"
+  [style]="{ width: '26rem' }"
+  header="New Loan"
+  [closable]="true">
+
+  <div class="p-fluid" *ngIf="form$ | async as form">
+    <div class="field">
+      <label for="book">Book (available only)</label>
+      <p-dropdown
+        inputId="book"
+        [options]="(bookOptions$ | async) ?? []"
+        optionLabel="title"
+        optionValue="id"
+        placeholder="Select a book"
+        [filter]="true"
+        [ngrxFormControlState]="form.controls.bookId">
+      </p-dropdown>
+      <small class="p-error" *ngIf="form.controls.bookId.isInvalid && (form.controls.bookId.isTouched || form.isSubmitted)">
+        Book is required.
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="member">Member</label>
+      <p-dropdown
+        inputId="member"
+        [options]="(memberOptions$ | async) ?? []"
+        optionValue="id"
+        placeholder="Select a member"
+        [filter]="true"
+        filterBy="firstName,lastName"
+        [ngrxFormControlState]="form.controls.memberId">
+        <ng-template let-member pTemplate="item">{{ member.firstName }} {{ member.lastName }}</ng-template>
+        <ng-template let-member pTemplate="selectedItem">{{ member.firstName }} {{ member.lastName }}</ng-template>
+      </p-dropdown>
+      <small class="p-error" *ngIf="form.controls.memberId.isInvalid && (form.controls.memberId.isTouched || form.isSubmitted)">
+        Member is required.
+      </small>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton label="Cancel" class="p-button-text" (click)="onClose()"></button>
+    <button pButton label="Create" [disabled]="(saving$ | async) ?? false" (click)="onSave()"></button>
+  </ng-template>
+</p-dialog>

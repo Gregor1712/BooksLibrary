@@ -1,0 +1,61 @@
+<p-toolbar styleClass="mb-3">
+  <ng-template pTemplate="left">
+    <h2 class="m-0">Loans</h2>
+  </ng-template>
+  <ng-template pTemplate="right">
+    <div class="flex align-items-center gap-3">
+      <div class="flex align-items-center gap-2">
+        <p-checkbox
+          inputId="showReturned"
+          [binary]="true"
+          [ngModel]="showReturned$ | async"
+          (onChange)="onToggleReturned($event.checked)">
+        </p-checkbox>
+        <label for="showReturned">Show returned</label>
+      </div>
+      <button pButton label="New Loan" icon="pi pi-plus" (click)="onNew()"></button>
+    </div>
+  </ng-template>
+</p-toolbar>
+
+<p-table [value]="(vm$ | async) ?? []" styleClass="p-datatable-sm">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Book</th>
+      <th>Member</th>
+      <th>Loaned</th>
+      <th>Due</th>
+      <th>Status</th>
+      <th style="width: 8rem"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-loan>
+    <tr>
+      <td>{{ loan.bookTitle }}</td>
+      <td>{{ loan.memberName }}</td>
+      <td>{{ loan.loanDate | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ loan.dueDate | date: 'yyyy-MM-dd' }}</td>
+      <td>
+        <p-tag
+          [value]="loan.status"
+          [severity]="loan.status === 'Returned' ? 'success' : loan.status === 'Overdue' ? 'danger' : 'info'">
+        </p-tag>
+      </td>
+      <td>
+        <button
+          *ngIf="!loan.isReturned"
+          pButton
+          label="Return"
+          class="p-button-sm p-button-outlined"
+          (click)="onReturn(loan)">
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="6">No loans found.</td></tr>
+  </ng-template>
+</p-table>
+
+<app-loan-dialog></app-loan-dialog>
+<p-confirmDialog [style]="{ width: '24rem' }"></p-confirmDialog>
