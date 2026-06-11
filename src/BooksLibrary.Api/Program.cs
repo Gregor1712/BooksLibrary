@@ -2,6 +2,7 @@ using FluentValidation;
 using Kros.KORM;
 using Kros.KORM.Extensions.Asp;
 using BooksLibrary.Api.Application.Behaviors;
+using BooksLibrary.Api.Infrastructure.Middleware;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +45,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ApiExceptionMiddleware>();
 app.UseKormMigrations();
 app.MapControllers();
 
