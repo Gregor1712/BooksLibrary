@@ -1921,6 +1921,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { ConfirmationService } from 'primeng/api';
 import { SharedModule } from '../shared/shared.module';
 import { BookDialogComponent } from './book-dialog/book-dialog.component';
 import { BooksPageComponent } from './books-page/books-page.component';
@@ -1937,6 +1938,7 @@ const routes: Routes = [{ path: '', component: BooksPageComponent }];
     StoreModule.forFeature(booksFeatureKey, booksReducer),
     EffectsModule.forFeature([BooksEffects]),
   ],
+  providers: [ConfirmationService],
 })
 export class BooksModule {}
 ```
@@ -2858,6 +2860,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { ConfirmationService } from 'primeng/api';
 import { SharedModule } from '../shared/shared.module';
 import { LoanDialogComponent } from './loan-dialog/loan-dialog.component';
 import { LoansPageComponent } from './loans-page/loans-page.component';
@@ -2874,6 +2877,7 @@ const routes: Routes = [{ path: '', component: LoansPageComponent }];
     StoreModule.forFeature(loansFeatureKey, loansReducer),
     EffectsModule.forFeature([LoansEffects]),
   ],
+  providers: [ConfirmationService],
 })
 export class LoansModule {}
 ```
