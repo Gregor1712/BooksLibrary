@@ -20,6 +20,8 @@ dotnet test tests/BooksLibrary.Api.Tests
 
 Swagger UI at `/swagger` in Development mode.
 
+Requires a local SQL Server instance (`localhost`, integrated security) with an empty `BooksLibraryDB` database — schema and seed data are auto-applied on first run.
+
 Frontend (from `src/BooksLibrary.WebApp`):
 
 ```bash
