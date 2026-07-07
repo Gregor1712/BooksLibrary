@@ -11,5 +11,6 @@ export class AppComponent {
     { label: 'Books', icon: 'pi pi-book', routerLink: '/books' },
     { label: 'Loans', icon: 'pi pi-sync', routerLink: '/loans' },
     { label: 'Test', icon: 'pi pi-sync', routerLink: '/test' },
+    { label: 'Doc', icon: 'pi pi-sync', routerLink: '/documents/doc' },
   ];
 }

@@ -3019,36 +3019,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\grego\\.nuget\\packages\\": {}
+    "C:\\Users\\pavlik\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\tests\\BooksLibrary.Api.Tests\\BooksLibrary.Api.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\pavlik\\RiderProjects\\BooksLibrary\\tests\\BooksLibrary.Api.Tests\\BooksLibrary.Api.Tests.csproj",
       "projectName": "BooksLibrary.Api.Tests",
-      "projectPath": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\tests\\BooksLibrary.Api.Tests\\BooksLibrary.Api.Tests.csproj",
-      "packagesPath": "C:\\Users\\grego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\tests\\BooksLibrary.Api.Tests\\obj\\",
+      "projectPath": "C:\\Users\\pavlik\\RiderProjects\\BooksLibrary\\tests\\BooksLibrary.Api.Tests\\BooksLibrary.Api.Tests.csproj",
+      "packagesPath": "C:\\Users\\pavlik\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pavlik\\RiderProjects\\BooksLibrary\\tests\\BooksLibrary.Api.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\grego\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\pavlik\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files (x86)\\Progress\\Telerik UI for ASP.NET Core 2026 Q1\\wrappers\\aspnetcore\\Binaries\\AspNet.Core": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.telerik.com/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj": {
-              "projectPath": "C:\\Users\\grego\\RiderProjects\\BooksLibrary\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj"
+            "C:\\Users\\pavlik\\RiderProjects\\BooksLibrary\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj": {
+              "projectPath": "C:\\Users\\pavlik\\RiderProjects\\BooksLibrary\\src\\BooksLibrary.Api\\BooksLibrary.Api.csproj"
             }
           }
         }
@@ -3063,7 +3059,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
@@ -3113,7 +3109,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Users\\pavlik\\.dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
