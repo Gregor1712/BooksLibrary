@@ -7,14 +7,6 @@ import { catchError, map, retry } from 'rxjs/operators';
 import {BooksApiService} from "../core/services/books-api.service";
 import {Book} from "../core/models/book";
 
-// const MOCK_DOCUMENTS: Array<Document> = [
-//   { id: 'mock-1', volumeInfo: { title: 'The Man Who Mistook His Wife for a Hat', authors: ['Oliver Sacks'] } },
-//   { id: 'mock-2', volumeInfo: { title: 'Musicophilia', authors: ['Oliver Sacks'] } },
-//   { id: 'mock-3', volumeInfo: { title: 'Awakenings', authors: ['Oliver Sacks'] } },
-//   { id: 'mock-4', volumeInfo: { title: 'An Anthropologist on Mars', authors: ['Oliver Sacks'] } },
-//   { id: 'mock-5', volumeInfo: { title: 'On the Move: A Life', authors: ['Oliver Sacks'] } },
-// ];
-
 @Injectable({ providedIn: 'root' })
 export class GoogleBooksService {
 
@@ -25,10 +17,9 @@ export class GoogleBooksService {
 
 
   getBooks(): Observable<Book[]> {
-
-    const response = this.booksApi.getAll();
-
-    return response;
+    return this.booksApi.getAll().pipe(
+      map(books => books.slice(0, 10))
+    );
   }
 
   // getBooks(): Observable<Array<Document>> {
@@ -45,9 +36,6 @@ export class GoogleBooksService {
   //       })
   //     );
   // }
-
-
-
 
 
 }
