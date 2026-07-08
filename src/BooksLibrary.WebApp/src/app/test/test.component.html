@@ -5,3 +5,8 @@
 <button (click)="onIncrement()">+1</button>
 <button (click)="onDecrement()">−1</button>
 <button (click)="onReset()">Reset</button>
+
+<div class="book-item" *ngFor="let book of documentCollection$ | async">
+  <div>{{book.title}}</div>
+  <div> by {{book.author}}</div>
+</div>

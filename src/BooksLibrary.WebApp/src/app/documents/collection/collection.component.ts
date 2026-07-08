@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Document } from '../document.model';
+import {Book} from "../../core/models/book";
+//import { Document } from '../document.model';
 
 @Component({
   selector: 'app-collection',
@@ -7,6 +8,6 @@ import { Document } from '../document.model';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent {
-  @Input() books: ReadonlyArray<Document> = [];
-  @Output() remove = new EventEmitter<string>();
+  @Input() books: ReadonlyArray<Book> = [];
+  @Output() remove = new EventEmitter<number>();
 }

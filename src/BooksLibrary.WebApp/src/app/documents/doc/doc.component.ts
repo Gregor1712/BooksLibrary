@@ -15,11 +15,11 @@ export class DocComponent {
   documents$ = this.store.select(selectDocuments);
   documentCollection$ = this.store.select(selectDocumentCollection);
 
-  onAdd(documentId: string) {
+  onAdd(documentId: number) {
     this.store.dispatch(DocumentsActions.addDocument({ documentId }));
   }
 
-  onRemove(documentId: string) {
+  onRemove(documentId: number) {
     this.store.dispatch(DocumentsActions.removeDocument({ documentId }));
   }
 

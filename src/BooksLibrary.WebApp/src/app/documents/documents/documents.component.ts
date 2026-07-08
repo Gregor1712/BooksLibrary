@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Document } from '../document.model';
+import {Book} from "../../core/models/book";
+//import { Document } from '../document.model';
 
 @Component({
   selector: 'app-documents',
@@ -7,8 +8,8 @@ import { Document } from '../document.model';
   styleUrls: ['./documents.component.scss']
 })
 export class DocumentsComponent {
-  @Input() books: ReadonlyArray<Document> = [];
-  @Output() add = new EventEmitter<string>();
+  @Input() books: ReadonlyArray<Book> = [];
+  @Output() add = new EventEmitter<number>();
 }
 
 
