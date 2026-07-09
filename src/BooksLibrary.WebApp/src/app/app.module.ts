@@ -22,6 +22,7 @@ import {testReducer} from "./test/store/test.reducer";
 import { DocumentsComponent } from './documents/documents/documents.component';
 import { CollectionComponent } from './documents/collection/collection.component';
 import { DocComponent } from './documents/doc/doc.component';
+import { DocumentsEffects } from "./documents/store/documents.effects";
 
 @NgModule({
   declarations: [AppComponent,
@@ -40,7 +41,9 @@ import { DocComponent } from './documents/doc/doc.component';
       documents: documentsReducer,
       collection: collectionReducer,
     }),
-    EffectsModule.forRoot([]),
+
+    EffectsModule.forRoot([DocumentsEffects]),
+
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
 
